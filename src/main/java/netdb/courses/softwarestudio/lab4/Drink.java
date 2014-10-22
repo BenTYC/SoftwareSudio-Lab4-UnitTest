@@ -1,15 +1,20 @@
 package netdb.courses.softwarestudio.lab4;
 
 public class Drink {
+	
+	private static int nextId = 1;
+	
 	private String name;
-
+	private int id;
+	
 	public Drink(String name) {
 		this.name = name;
+		this.id = nextId++;
 	}
 
 	@Override
 	public String toString() {
-		return name;
+		return name + ", " + id;
 	}
 
 	@Override
@@ -20,6 +25,6 @@ public class Drink {
 			return false;
 
 		Drink drink = (Drink) object;
-		return this.toString().equals(drink.toString());
+		return this.name.equals(drink.name);
 	}
 }

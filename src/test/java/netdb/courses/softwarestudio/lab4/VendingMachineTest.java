@@ -10,7 +10,7 @@ public class VendingMachineTest {
 	
 	@Before
 	public void setup(){
-		// TODO new your Vending Machine and assign it to vm
+		vm = new VendingMachineImpl();
 	}
 	
 	@After
@@ -22,8 +22,30 @@ public class VendingMachineTest {
 	public void itShouldReturnCorrectDrinkDescription(){
 		Drink drink = new Drink("Cola");
 		vm.addDrink(drink);
-		Assert.assertEquals("Cola", vm.getDrinksDescription()[0]);
+		Assert.assertEquals(drink.toString(), vm.getDrinksDescription()[0]);
 	}
 	
-	// TODO Implement other test cases
+	@Test
+	public void itShouldReturnCorrectDrinkCount() {
+		Drink drink = new Drink("Cola");
+		vm.addDrink(drink);
+		drink = new Drink("Juice");
+		vm.addDrink(drink);
+		drink = new Drink("Cola");
+		vm.addDrink(drink);
+		
+		Assert.assertEquals(3, vm.getDrinkCount());
+	}
+	
+	@Test
+	public void itShouldReturnCorrectDrinkFlavorCount() {
+		Drink drink = new Drink("Cola");
+		vm.addDrink(drink);
+		drink = new Drink("Juice");
+		vm.addDrink(drink);
+		drink = new Drink("Cola");
+		vm.addDrink(drink);
+		
+		Assert.assertEquals(2, vm.getDrinkFlavorCount());
+	}
 }
